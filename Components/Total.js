@@ -3,6 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import ConfirmOrder from '../Page/ConfirmOrder';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 export default function Total ({ navigation }){
+    const [quantity, setQuantity] = useState(1);
+    const subTotal = quantity * 35 - discount + shipping;
     return (
         <View style={styles.container}>
             <View style={styles.summaryContainer}>

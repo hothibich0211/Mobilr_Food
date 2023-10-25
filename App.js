@@ -1,13 +1,13 @@
 import React from 'react';
 import { StyleSheet} from 'react-native'
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './Navigation';
 import Filter from './Page/Filter';
 import ConfirmOrder from './Page/ConfirmOrder';
 
-// const Tab = createBottomTabNavigator();
+
 const Stack = createStackNavigator();
 
 export default function App() {

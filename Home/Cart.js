@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { ScrollView } from 'react-native';
 import ConfirmOrder from '../Page/ConfirmOrder';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import Total from '../Components/Total';
 
 const Order = require('../assets/images/Menu_Photo-1.png');
 
@@ -21,7 +22,7 @@ export default function Cart() {
         }
     };
 
-    const subTotal = quantity * 35 - discount + shipping;
+
 
     return (
 
@@ -85,7 +86,7 @@ export default function Cart() {
                         </TouchableOpacity>
                     </View>
                 </View>
-                
+                <Total/>
             </View>
 
             <StatusBar style="auto" />
