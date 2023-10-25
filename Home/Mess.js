@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import Header from '../Components/Header';
-import { StyleSheet, Text, View, Image,} from 'react-native';
+
+import { StyleSheet, Text, View, Image,TouchableOpacity} from 'react-native';
 
 const Chat_1 = require('../assets/images/chat_3.png');
 const Chat_2 = require('../assets/images/chat_0.png');
 const Chat_3 = require('../assets/images/chat_1.png');
 
 
-export default function Mess() {
+export default function Mess({navigation}){
     return (
             <View style={styles.container}>
                 <View>
                     <Text style={styles.textChat}>Chat</Text>
                     <View style={styles.Cards}>
-                        <Image source={Chat_1} resizeMode="cover" style={styles.Menu_list}></Image>
+                    <TouchableOpacity onPress={()=>navigation.navigate("Message")}>
+                        <Image source={Chat_1} resizeMode="cover" style={styles.Menu_list}  ></Image>
+                        </TouchableOpacity>
                         <View style={styles.textContainer}>
                             <Text style={styles.textGreenNodol}>Louis Kelly</Text>
                             <Text style={styles.textPrice}>20:00</Text>

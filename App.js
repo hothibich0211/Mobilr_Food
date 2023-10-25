@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './Navigation';
 import Filter from './Page/Filter';
 import ConfirmOrder from './Page/ConfirmOrder';
-
+import Message from './Page/Message';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +17,7 @@ export default function App() {
         <Stack.Screen name="MainStack" component={Navigation} />
         <Stack.Screen name="Filter" component={Filter} />
         <Stack.Screen name="ConfirmOrder" component={ConfirmOrder} />
+        <Stack.Screen name="Message" component={Message} />
       </Stack.Navigator>
     </NavigationContainer>
   );
