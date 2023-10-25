@@ -9,6 +9,7 @@ import Mess from './Home/Mess';
 import Cart from './Home/Cart';
 import User from './Home/User';
 import ConfirmOrder from './Page/ConfirmOrder';
+import Message from './Page/Message';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -19,6 +20,7 @@ function MainStack() {
       <Stack.Screen name="Homepage" component={HomeScreen} />
       <Stack.Screen name="Filter" component={Filter} />
       <Stack.Screen name="ConfirmOrder" component={ConfirmOrder} />
+      <Stack.Screen name="Message" component={Message} />
     </Stack.Navigator>
   );
 }
