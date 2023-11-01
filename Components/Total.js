@@ -10,7 +10,7 @@ export default function Total({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.backButn}>
-                <View style={styles.row}>
+                <View style={styles.row_1}>
                     <View style={styles.summaryContainer}>
                         <Text style={styles.summaryText}>Total Quantity: </Text>
                         <Text style={styles.summaryText}>Discount: </Text>
@@ -23,11 +23,12 @@ export default function Total({ navigation }) {
                         <Text style={styles.subTotalPrice}>{shipping}$</Text>
                         <Text style={styles.subTotalPrice}> {subTotal}$</Text>
                     </View>
-                    <View>
-                        <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText} onPress={() => navigation.navigate("ConfirmOrder")}>Place My Order</Text>
-                        </TouchableOpacity>
-                    </View>
+                </View>
+
+                <View style={styles.row_2}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText} onPress={() => navigation.navigate("ConfirmOrder")}>Place My Order</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
             <StatusBar style="auto" />
@@ -68,13 +69,27 @@ const styles = StyleSheet.create({
     subTotalPrice: {
         fontSize: 18,
         color: '#ffff',
+        marginBottom: 7,
         marginTop: 10,
-        marginLeft: 50,
+        textAlign: 'right',
+        marginRight: 5,
     },
-    row:{
+    row_1: {
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
     },
+    button: {
+        backgroundColor: '#FFF',
+        margin: 10,
+        borderRadius:15,
+    },
+    buttonText:{
+        padding:15,
+        textAlign:'center',
+    },
+    prices:{
+        textAlign:'right',
+    }
 })
