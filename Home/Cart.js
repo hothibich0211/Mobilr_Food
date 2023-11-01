@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView } from 'react-native';
-import ConfirmOrder from '../Page/ConfirmOrder';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, ScrollView, Text, View, Image, TouchableOpacity } from 'react-native';
 import Total from '../Components/Total';
+import DataCart from '../Data/DataCart';
 
 const Order = require('../assets/images/Menu_Photo-1.png');
 
-export default function Cart() {
+export default function Cart({ navigation }) {
+    const [itemCart, setItemCart] = useState(DataCart);
     const [quantity, setQuantity] = useState(1);
-    const [discount, setDiscount] = useState(0);
-    const [shipping, setShipping] = useState(10);
+    const [total, setTotal] = useState(0);
 
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
@@ -23,72 +22,49 @@ export default function Cart() {
     };
 
 
+    const calculateTotal = () => {
+        let total = 0;
+        for (const item of itemCart) {
+            total += item.price * quantity;
+        }
+        return total;
+    };
+
+
+    useEffect(() => {
+        const newTotal = calculateTotal();
+        setTotal(newTotal);
+    }, [quantity, itemCart]);
 
     return (
-
         <View style={styles.container}>
             <View>
-                <Text style={styles.textChat}>Order details</Text>
-                <View style={styles.Cart1}>
-                    <View style={styles.Cards}>
-                        <Image source={Order} resizeMode="cover" style={styles.Menu_list} />
-                        <View style={styles.textContainer}>
-                            <Text style={styles.textGreenNodol}>Spacy fresh crab</Text>
-                            <Text style={styles.textPrice}>$ 35</Text>
-                            <Text style={styles.textYour}>Waroenk kita</Text>
+                <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                    <Text style={styles.textChat}>Order details</Text>
+                    {itemCart.map((item) => (
+                        <View style={styles.Cart1} key={item.id}>
+                            <View style={styles.Cards}>
+                                <Image source={item.imageSource} resizeMode="cover" style={styles.Menu_list} />
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textGreenNodol}>{item.name}</Text>
+                                    <Text style={styles.textPrice}>{item.price}</Text>
+                                    <Text style={styles.textYour}>{item.restaurant}</Text>
+                                </View>
+                            </View>
+                            <View style={styles.quantityContainer}>
+                                <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
+                                    <Text style={styles.quantityButtonText}>-</Text>
+                                </TouchableOpacity>
+                                <Text style={styles.quantityText}>{quantity}</Text>
+                                <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
+                                    <Text style={styles.quantityButtonText}>+</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
-                    <View style={styles.quantityContainer}>
-                        <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
-                            <Text style={styles.quantityButtonText}>-</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.quantityText}>{quantity}</Text>
-                        <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-                            <Text style={styles.quantityButtonText}>+</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.Card2}>
-                    <View style={styles.Card}>
-                        <Image source={Order} resizeMode="cover" style={styles.Menu_list} />
-                        <View style={styles.textContainer}>
-                            <Text style={styles.textGreenNodol}>Spacy fresh crab</Text>
-                            <Text style={styles.textPrice}>$ 35</Text>
-                            <Text style={styles.textYour}>Waroenk kita</Text>
-                        </View>
-                    </View>
-                    <View style={styles.quantityContainer}>
-                        <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
-                            <Text style={styles.quantityButtonText}>-</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.quantityText}>{quantity}</Text>
-                        <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-                            <Text style={styles.quantityButtonText}>+</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.Card3}>
-                    <View style={styles.Cardd}>
-                        <Image source={Order} resizeMode="cover" style={styles.Menu_list} />
-                        <View style={styles.textContainer}>
-                            <Text style={styles.textGreenNodol}>Spacy fresh crab</Text>
-                            <Text style={styles.textPrice}>$ 35</Text>
-                            <Text style={styles.textYour}>Waroenk kita</Text>
-                        </View>
-                    </View>
-                    <View style={styles.quantityContainer}>
-                        <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
-                            <Text style={styles.quantityButtonText}>-</Text>
-                        </TouchableOpacity>
-                        <Text style={styles.quantityText}>{quantity}</Text>
-                        <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
-                            <Text style={styles.quantityButtonText}>+</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <Total/>
+                    ))}
+                </ScrollView>
+                <Total navigation={navigation} total={total} />
             </View>
-
             <StatusBar style="auto" />
         </View>
 
@@ -96,9 +72,9 @@ export default function Cart() {
 }
 
 const styles = StyleSheet.create({
-    // scrollViewContent: {
-    //     flexGrow: 1,
-    // },
+    scrollViewContent: {
+        flexGrow: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -112,65 +88,28 @@ const styles = StyleSheet.create({
         top: '12%',
         fontWeight: 'bold',
         fontSize: 20,
-        left: '2%',
+        left: '5%',
     },
     Cart1: {
         top: 250,
-        padding: 10,
+        padding: 3,
+        margin: 5,
     },
     Cards: {
         backgroundColor: '#fff',
-        width: 330,
+        width: 345,
         borderRadius: 8,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.3,
         shadowRadius: 4,
         elevation: 5,
-        margin: 5,
-        right: '-1%',
+        margin: -20,
+        right: '-5%',
         top: -140,
         height: 80,
-        margin: 5,
     },
-    Card2: {
-        top: 190,
-        padding: 10,
-    },
-    Card: {
-        backgroundColor: '#fff',
-        width: 330,
-        borderRadius: 8,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        elevation: 5,
-        margin: 5,
-        right: '-1%',
-        top: -140,
-        height: 80,
-        margin: 5,
-    },
-    Card3: {
-        top: 130,
-        padding: 10,
-    },
-    Cardd: {
-        backgroundColor: '#fff',
-        width: 330,
-        borderRadius: 8,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        elevation: 5,
-        margin: 5,
-        right: '-1%',
-        top: -140,
-        height: 80,
-        margin: 5,
-    },
+
     textGreenNodol: {
         right: '7%',
         fontSize: 18,
@@ -203,7 +142,7 @@ const styles = StyleSheet.create({
     quantityButton: {
         backgroundColor: '#ccc',
         paddingHorizontal: 6,
-        paddingVertical: -2,
+        paddingVertical: 2,
         borderRadius: 5,
     },
     quantityButtonText: {
@@ -214,6 +153,5 @@ const styles = StyleSheet.create({
     quantityText: {
         fontSize: 18,
         marginHorizontal: 20,
-
     },
 });

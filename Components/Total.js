@@ -1,86 +1,80 @@
 import React, { useState } from 'react';
+import { ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import ConfirmOrder from '../Page/ConfirmOrder';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-export default function Total ({ navigation }){
+export default function Total({ navigation }) {
     const [quantity, setQuantity] = useState(1);
+    const [discount, setDiscount] = useState(0);
+    const [shipping, setShipping] = useState(10);
     const subTotal = quantity * 35 - discount + shipping;
     return (
         <View style={styles.container}>
-            <View style={styles.summaryContainer}>
-                    <Text style={styles.summaryText}>Total Quantity: </Text>
-                    <Text style={styles.summaryText}>Discount: </Text>
-                    <Text style={styles.summaryText}>Shipping: </Text>
-                    <Text style={styles.subTotalText}>Sub Total:</Text>
+            <View style={styles.backButn}>
+                <View style={styles.row}>
+                    <View style={styles.summaryContainer}>
+                        <Text style={styles.summaryText}>Total Quantity: </Text>
+                        <Text style={styles.summaryText}>Discount: </Text>
+                        <Text style={styles.summaryText}>Shipping: </Text>
+                        <Text style={styles.subTotalText}>Sub Total:</Text>
+                    </View>
+                    <View style={styles.prices}>
+                        <Text style={styles.subTotalPrice}>{quantity}$</Text>
+                        <Text style={styles.subTotalPrice}>{discount}$</Text>
+                        <Text style={styles.subTotalPrice}>{shipping}$</Text>
+                        <Text style={styles.subTotalPrice}> {subTotal}$</Text>
+                    </View>
+                    <View>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.buttonText} onPress={() => navigation.navigate("ConfirmOrder")}>Place My Order</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.prices}>
-                    <Text style={styles.subTotalPrice}>{quantity}$</Text>
-                    <Text style={styles.subTotalPrice}>{discount}$</Text>
-                    <Text style={styles.subTotalPrice}>{shipping}$</Text>
-                    <Text style={styles.subTotalPrice}> {subTotal}$</Text>
-                </View>
-                <View>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={() => navigation.navigate("ConfirmOrder")}>Place My Order</Text>
-                    </TouchableOpacity>
-                </View>
-                <StatusBar style="auto" />
+            </View>
+            <StatusBar style="auto" />
         </View>
-        
+
+
     )
 }
 const styles = StyleSheet.create({
+    scrollViewContent: {
+        flexGrow: 1,
+    },
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    summaryContainer: {
-        marginTop: 30,
-        top: 12,
-        backgroundColor: '#6B50F6',
-        borderRadius: 20,
-        height: 245,
-        width: 350,
-        left: 7.5,
 
     },
+    backButn: {
+        backgroundColor: '#6B50F6',
+        width: 330,
+        height: 230,
+        borderRadius: 20,
+    },
     summaryText: {
-        top: 18,
         fontSize: 18,
-        color: 'white',
-        marginBottom: 10,
-        left: 30,
+        color: '#ffff',
+        marginBottom: 7,
+        marginTop: 10,
+        marginLeft: 10,
     },
     subTotalText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white',
-        marginTop: 20,
-        left: 30,
+        fontSize: 18,
+        color: '#ffff',
+        marginBottom: 7,
+        marginTop: 10,
+        marginLeft: 10,
     },
     subTotalPrice: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: 'white',
-        marginTop: -145,
-        padding: 40,
-        textAlign: 'right',
+        fontSize: 18,
+        color: '#ffff',
+        marginTop: 10,
+        marginLeft: 50,
     },
-    button: {
-        backgroundColor: '#fff',
-        borderRadius: 10,
-        alignItems: 'center',
-        top: -40,
-        left: '9%',
-        width: 300,
-        height: 40,
-    },
-    buttonText: {
-        color: '#6B50F6',
-        fontSize: 15,
-        top: '20%',
-        fontWeight: 'bold',
+    row:{
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent:'space-between',
     },
 })
