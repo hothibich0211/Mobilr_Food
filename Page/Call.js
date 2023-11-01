@@ -13,7 +13,7 @@ export default function Call() {
     return (
         <View style={styles.container}>
             <View>
-                    <View style={styles.textContainer}>
+                    <View>
                         <Image source={Calling} resizeMode="cover" style={styles.Calling}></Image>
                         <Text style={styles.textLew}>Richard Lewis</Text>
                         <Text style={styles.textRing}>Ringing...</Text>
