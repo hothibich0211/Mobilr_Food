@@ -7,7 +7,7 @@ import HomeScreem from './Home/Home';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Image } from 'react-native';
-import Call from './Home/Call';
+// import Call from './Home/Call';
 
 const Users = require('./assets/images/icons8-user-30.png');
 const Carts = require('./assets/images/icons8-cart-30.png');
@@ -38,11 +38,11 @@ export default function Navigation() {
         ),
       }} />
 
-      <Tab.Screen name="Call" component={Call} options={{
+      {/* <Tab.Screen name="Call" component={Call} options={{
         tabBarIcon: ({ color, size }) => (
           <Image source={Messa} style={{ tintColor: color, width: size, height: size }} />
         ),
-      }} />
+      }} /> */}
 
     </Tab.Navigator>
 

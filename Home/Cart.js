@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     },
     Card1: {
         backgroundColor: '#fff',
-        marginTop: 30,
+        marginTop: 20,
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
