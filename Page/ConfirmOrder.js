@@ -1,26 +1,28 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native';
 
-
+const Bg = require('../assets/images/Bg.png');
 const Location = require('../assets/images/icon_Location.png');
 const Pay = require('../assets/images/paypal_Logo.png');
 const Back = require('../assets/images/IConBack.png');
 export default function ConfirmOrder() {
 	return (
 		<View style={styles.container}>
-			<Image source={Back} resizeMode='cover' style={styles.iconBack} ></Image>
-			<Text style={styles.textConfirm}>Confirm Order</Text>
-			<View style={styles.card}>
-				<View style={styles.row_1}>
-					<Text style={styles.textDeliver}>Deliver To</Text>
-					<Text style={styles.textEdit}>Edit</Text>
+			<ImageBackground source={Bg} resizeMode="cover" style={styles.Bg}>
+				<Image source={Back} resizeMode='cover' style={styles.iconBack} ></Image>
+				<Text style={styles.textConfirm}>Confirm Order</Text>
+				<View style={styles.card}>
+					<View style={styles.row_1}>
+						<Text style={styles.textDeliver}>Deliver To</Text>
+						<Text style={styles.textEdit}>Edit</Text>
+					</View>
+					<View style={styles.row_2}>
+						<Image source={Location} resizeMode="cover" style={styles.imageLocation} />
+						<Text style={styles.textLocation}>4517 Washington Ave. Manchester, {'\n'}Kentucky 39495</Text>
+					</View>
 				</View>
-				<View style={styles.row_2}>
-					<Image source={Location} resizeMode="cover" style={styles.imageLocation} />
-					<Text style={styles.textLocation}>4517 Washington Ave. Manchester, {'\n'}Kentucky 39495</Text>
-				</View>
-			</View>
+			</ImageBackground>
 			<StatusBar style="auto" />
 		</View>
 	);
@@ -29,17 +31,23 @@ export default function ConfirmOrder() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
+
+
+	},
+	card: {
+
+	},
+	Bg: {
+		flex: 1,
+		justifyContent: 'center',
 		alignItems: 'center',
 		justifyContent: 'center',
 	},
-	card:{
-		
-	},
-	row_1:{
-		flex:1,
-		flexDirection:'row',
-
+	row_1: {
+		flex: 1.5,
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		justifyContent: 'space-between',
 	},
 	// textConfirm: {
 	// 	top: -200,

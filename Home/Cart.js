@@ -83,13 +83,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     textCard: {
-        marginTop: 100,
+        marginTop: 80,
         fontSize: 30,
         fontWeight: 'bold',
     },
     Card1: {
         backgroundColor: '#fff',
-        marginTop: 30,
+        marginTop: 20,
         flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
