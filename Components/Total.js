@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
-export default function Total({ navigation }) {
+import { useNavigation } from '@react-navigation/native';
+export default function Total({ destination, title }) {
+    const navigation = useNavigation();
+
+    const handleButtonPress = () => {
+        navigation.navigate(destination);
+      };
+      
     const [quantity, setQuantity] = useState(1);
     const [discount, setDiscount] = useState(0);
     const [shipping, setShipping] = useState(10);
@@ -26,8 +33,8 @@ export default function Total({ navigation }) {
                 </View>
 
                 <View style={styles.row_2}>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={() => navigation.navigate("ConfirmOrder")}>Place My Order</Text>
+                    <TouchableOpacity style={styles.button} title={title} onPress={handleButtonPress}>
+                        <Text style={styles.buttonText} >Place My Order</Text>
                     </TouchableOpacity>
                 </View>
             </View>

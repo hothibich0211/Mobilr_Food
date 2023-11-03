@@ -66,7 +66,7 @@ export default function Cart({ navigation }) {
                         </View>
                     ))}
                 </ScrollView>
-                <Total navigation={navigation} total={total} />
+                <Total total={total} destination="ConfirmOrder" title="Go to ConfirmOrder" />
             </View>
             <StatusBar style="auto" />
         </View>

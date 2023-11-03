@@ -7,6 +7,7 @@ import Navigation from './Navigation';
 import Filter from './Page/Filter';
 import ConfirmOrder from './Page/ConfirmOrder';
 import Message from './Page/Message';
+import Payment from './Page/Payment';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name="Filter" component={Filter} />
         <Stack.Screen name="ConfirmOrder" component={ConfirmOrder} />
         <Stack.Screen name="Message" component={Message} />
+        <Stack.Screen name="Payment" component={Payment} />
       </Stack.Navigator>
     </NavigationContainer>
   );
