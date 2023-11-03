@@ -20,4 +20,11 @@ export default DataCart = [
       restaurant: 'Yet Another Restaurant',
       imageSource: require('../assets/images/Menu_Photo-1.png'), 
     },
+    {
+      id: 4,
+      name: 'Yet Another ',
+      price: '$45',
+      restaurant: 'Yet Another Restaurant',
+      imageSource: require('../assets/images/Menu_Photo-1.png'), 
+    },
   ];
