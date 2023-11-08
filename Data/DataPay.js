@@ -12,12 +12,12 @@ export default DataPay = [
         pay: '2121 6352 8465 ****',
     },
     {
-        id: 2,
+        id: 3,
         imageSource: require('../assets/images/Payoneerlogo.png'),
         pay: '2121 6352 8465 ****',
     },
     {
-        id: 2,
+        id: 4,
         imageSource: require('../assets/images/visalogo.png'),
         pay: '2121 6352 8465 ****',
     },

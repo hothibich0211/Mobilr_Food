@@ -13,12 +13,12 @@ export default function Payment({navigation}){
 					<Image source={Back} resizeMode='cover' style={styles.iconBack} />
 				</TouchableOpacity>
 				<Text style={styles.textConfirm}>Payment</Text>
-				{payment.map((item) => (
+				{payment.slice(1,4).map((item) => (
 					<View style={styles.card} key={item.id}>
-						<View style={styles.row_2}>
+						<TouchableOpacity style={styles.row_2}>
 							<Image source={item.imageSource} resizeMode="cover" style={styles.imageLocation} />
 							<Text style={styles.textLocation}>{item.pay}</Text>
-						</View>
+						</TouchableOpacity>
 					</View>
 				))}
 			</ImageBackground>
@@ -44,13 +44,30 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold',
 	},
 	row_2: {
-		flex: 1,
+		// flex: 1,
+		padding:10,
 		marginTop: 40,
 		flexDirection: 'row',
 		flexWrap: 'wrap',
 		gap: 20,
 		marginLeft: 35,
+		backgroundColor:'#fff',
+		width:300,
+		height:70,
+		borderRadius: 15,
+		alignItems: 'center',
+		shadowColor: 'rgba(0,0,0,0.5)',
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 1,
+		shadowRadius: 4,
+		elevation: 4,
 	},
-
+	textLocation:{
+		marginTop:20,
+	}
+	
 
 });

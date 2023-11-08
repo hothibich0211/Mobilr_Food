@@ -6,7 +6,7 @@ import Total from '../Components/Total';
 const Bg = require('../assets/images/Bg.png');
 const Location = require('../assets/images/icon_Location.png');
 const Back = require('../assets/images/IConBack.png');
-export default function ConfirmOrder({ navigation }) {
+export default function Shipping({ navigation }) {
 	const [payment, setPayment] = useState(DataPay);
 	return (
 		<View style={styles.container}>
