@@ -25,7 +25,7 @@ export default function Rating({ navigation }) {
             <View>
                 <View>
                     <Image source={Calling} resizeMode="cover" style={styles.Calling} />
-                    <Text style={styles.textLew}>Thank You {'\n'} Order Completed</Text>
+                    <Text style={styles.textLew}>Thank You! {'\n'} Order Completed</Text>
                     <Text style={styles.textDriver}>Please rate your last Driver</Text>
                 </View>
                 <View style={styles.ratingContainer}>
@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         marginTop: 100,
-        width:200,
+        width:210,
     },
     submitButtonText: {
         fontSize: 18,
@@ -163,8 +163,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingVertical: 10,
         paddingHorizontal: 20,
-        marginTop: -45,
-        marginLeft:70,
+        marginTop: -44.5,
+        marginLeft:220,
         width:80
     },
     submitText:{
