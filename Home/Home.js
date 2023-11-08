@@ -21,7 +21,7 @@ export default function HomeScreem({navigation}) {
                 <View style={styles.GroupAd}>
                     <Image source={Adv} resizeMode="cover" style={styles.Advert}></Image>
                     <Text style={styles.textOcteber}>Special Deal For {'\n'}October</Text>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Detail")}>
                         <Text style={styles.buttonText}>Buy Now</Text>
                     </TouchableOpacity>
                 </View>
