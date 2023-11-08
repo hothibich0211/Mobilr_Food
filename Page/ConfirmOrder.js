@@ -1,28 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, ImageBackground, Text, View, Image, TouchableOpacity } from 'react-native';
-
+import { StyleSheet, ImageBackground, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import DataPay from '../Data/DataPay';
+import Total from '../Components/Total';
 const Bg = require('../assets/images/Bg.png');
 const Location = require('../assets/images/icon_Location.png');
-const Pay = require('../assets/images/paypal_Logo.png');
 const Back = require('../assets/images/IConBack.png');
-export default function ConfirmOrder() {
+export default function ConfirmOrder({ navigation }) {
+	const [payment, setPayment] = useState(DataPay);
 	return (
 		<View style={styles.container}>
 			<ImageBackground source={Bg} resizeMode="cover" style={styles.Bg}>
-				<Image source={Back} resizeMode='cover' style={styles.iconBack} ></Image>
+				<TouchableOpacity onPress={() => navigation.goBack()}>
+					<Image source={Back} resizeMode='cover' style={styles.iconBack} />
+				</TouchableOpacity>
 				<Text style={styles.textConfirm}>Confirm Order</Text>
-				<View style={styles.card}>
-					<View style={styles.row_1}>
-						<Text style={styles.textDeliver}>Deliver To</Text>
-						<Text style={styles.textEdit}>Edit</Text>
-					</View>
-					<View style={styles.row_2}>
-						<Image source={Location} resizeMode="cover" style={styles.imageLocation} />
-						<Text style={styles.textLocation}>4517 Washington Ave. Manchester, {'\n'}Kentucky 39495</Text>
-					</View>
-				</View>
+				<ScrollView>
+					{payment.map((item) => (
+						<View style={styles.card} key={item.id}>
+							<View style={styles.row_1}>
+								<Text style={styles.textDeliver}>{item.name}</Text>
+								<Text style={styles.textEdit}>Edit</Text>
+							</View>
+							<View style={styles.row_2}>
+								<Image source={item.imageSource} resizeMode="cover" style={styles.imageLocation} />
+								<Text style={styles.textLocation}>{item.pay}</Text>
+							</View>
+						</View>
+					))}
+				</ScrollView>
 			</ImageBackground>
+			<Total destination="Payment" title="Go to Payment" />
+
 			<StatusBar style="auto" />
 		</View>
 	);
@@ -31,98 +40,47 @@ export default function ConfirmOrder() {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-
-
+	},
+	Bg: {
+		flex: 1,
+	},
+	iconBack: {
+		marginLeft: 25,
+		marginTop: 60,
+	},
+	textConfirm: {
+		marginTop: 20,
+		marginLeft: 25,
+		fontSize: 30,
+		fontWeight: 'bold',
 	},
 	card: {
 
 	},
-	Bg: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+
 	row_1: {
-		flex: 1.5,
+		marginTop: 30,
 		flexDirection: 'row',
 		flexWrap: 'wrap',
-		justifyContent: 'space-between',
+		marginLeft: 35,
+
 	},
-	// textConfirm: {
-	// 	top: -200,
-	// 	fontWeight: 'bold',
-	// 	fontSize: 20,
-	// 	left: -110,
-	// },
-	// CartLocation: {
-	// 	backgroundColor: '#fff',
-	// 	width: 340,
-	// 	borderRadius: 8,
-	// 	shadowColor: '#000',
-	// 	shadowOffset: { width: 0, height: 2 },
-	// 	shadowOpacity: 0.3,
-	// 	shadowRadius: 4,
-	// 	elevation: 5,
-	// 	margin: 5,
-	// 	right: '0.5%',
-	// 	top: -180,
-	// 	height: 90,
-	// 	margin: 5,
-	// },
-	// imageLocation: {
-	// 	top: 35,
-	// 	left: 10,
-	// },
-	// textDeliver: {
-	// 	top: -30,
-	// 	left: 10,
-	// 	color: '#dededf'
-	// },
-	// textLocation: {
-	// 	top: -21,
-	// 	left: 60,
-	// 	fontWeight: 'bold',
-	// 	fontSize: 17,
-	// },
-	// textEdit: {
-	// 	top: -93,
-	// 	color: '#6B50F6',
-	// 	left: 300,
-	// },
-	// imagePay: {
-	// 	top: 35,
-	// 	left: 10,
-	// },
-	// cardPay: {
-	// 	backgroundColor: '#fff',
-	// 	width: 340,
-	// 	borderRadius: 8,
-	// 	shadowColor: '#000',
-	// 	shadowOffset: { width: 0, height: 2 },
-	// 	shadowOpacity: 0.3,
-	// 	shadowRadius: 4,
-	// 	elevation: 5,
-	// 	margin: 5,
-	// 	right: '0.5%',
-	// 	top: -180,
-	// 	height: 90,
-	// 	margin: 5,
-	// },
-	// textPay: {
-	// 	top: -20,
-	// 	left: 10,
-	// 	color: '#dededf',
-	// },
-	// textBank: {
-	// 	top: -8,
-	// 	left: 145,
-	// 	fontSize: 18,
-	// },
-	// textEdit2: {
-	// 	top: -63,
-	// 	left: 300,
-	// 	color: '#6B50F6'
-	// }
+	textDeliver: {
+		fontSize: 15,
+		opacity: 0.3,
+		flex: 1,
+	},
+	textEdit: {
+		color: '#6B50F6',
+		marginRight: 30,
+	},
+	row_2: {
+		marginTop: 20,
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		gap: 20,
+		marginLeft: 35,
+	},
+
 
 });

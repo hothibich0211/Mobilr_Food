@@ -40,8 +40,9 @@ export default function Cart({ navigation }) {
     return (
         <View style={styles.container}>
             <View>
+                <Text style={styles.textCard}>Order details</Text>
                 <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                    <Text style={styles.textCard}>Order details</Text>
+
                     {itemCart.map((item) => (
                         <View style={styles.Card1} key={item.id}>
 
@@ -65,7 +66,7 @@ export default function Cart({ navigation }) {
                         </View>
                     ))}
                 </ScrollView>
-                <Total navigation={navigation} total={total} />
+                <Total total={total} destination="ConfirmOrder" title="Go to ConfirmOrder" />
             </View>
             <StatusBar style="auto" />
         </View>
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     textCard: {
-        marginTop: 80,
+        marginTop: 50,
         fontSize: 30,
         fontWeight: 'bold',
     },
@@ -129,5 +130,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#6B50F6',
     },
-    
+
 });
