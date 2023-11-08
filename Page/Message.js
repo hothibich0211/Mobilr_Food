@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import DataChat from '../Data/DataChat';
 
 const Chat_1 = require('../assets/images/chat_3.png');
@@ -11,19 +12,19 @@ const Send = require('../assets/images/icon_Send.png');
 
 
 export default function Message({ navigation }) {
-    // const [itemChat] = useState(DataChat);
+    
     return (
         <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.container}>
             <View>
                 <Text style={styles.textChat}>Chat</Text>
-                {/* {itemChat.map((item)=>( */}
+               
                     <>
                         <View style={styles.Cards} >
                             <Image source={Chat_1} resizeMode="cover" style={styles.Menu_list}></Image>
                             <View style={styles.textContainer}>
                                 <Text style={styles.textGreenNodol}>Louis Kelly</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate("Call")}>
+                                <TouchableOpacity onPress={() => navigation.navigate("Phone")} >
                                     <Image source={Call} resizeMode="cover" style={styles.Call}></Image>
                                 </TouchableOpacity>
 
@@ -54,13 +55,13 @@ export default function Message({ navigation }) {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <View>
+                        <View style={styles.search}>
                             <TextInput style={styles.TextMess} placeholder="Okay I'm waiting" />
                             <Image source={Send} resizeMode="cover" style={styles.Send}></Image>
                         </View>
 
                     </>
-                 {/* ))}  */}
+                
                 
             </View>
 
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         shadowOpacity: 0.3,
         marginTop: 30,
-        height: 80,
+        height: 70,
         margin: 5,
     },
 
@@ -124,12 +125,11 @@ const styles = StyleSheet.create({
     },
     Menu_list1: {
         marginLeft: 10,
-        marginRight: 20,
-        alignSelf: "center",
+        marginRight: 30,
+        // alignSelf: "center",
+        marginTop:5,
     },
-    Button:{
-        marginTop:30,
-    },
+   
     buttonR: {
         backgroundColor: '#f6f6f6',
         borderRadius: 15,
@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
         alignItems: 'left',
         width: 140,
         marginRight: -120,
+        marginTop:-50,
     },
     TextRes: {
         fontSize: 17,
@@ -149,7 +150,7 @@ const styles = StyleSheet.create({
         marginLeft: 55,
         alignItems: 'left',
         width: 280,
-        top: -90,
+        marginTop:20
     },
     TextOkay: {
         fontSize: 17,
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
         marginLeft: 5,
         alignItems: 'left',
         width: 180,
-        top: -55,
+        marginTop:30,
     },
     TextWai: {
         fontSize: 17,
@@ -174,7 +175,7 @@ const styles = StyleSheet.create({
         marginLeft: 185,
         alignItems: 'left',
         width: 150,
-        top: -23,
+       marginTop:20
     },
     TextIam: {
         fontSize: 17,
@@ -183,13 +184,16 @@ const styles = StyleSheet.create({
     Button: {
         top: 90,
     },
+    search:{
+        marginTop:170,
+    },
     TextMess: {
         top: 188,
         backgroundColor: '#F0EEFE',
         padding: 9,
         right: 2.5,
         color: '#ffff',
-        width: 345,
+        width: 350,
         borderRadius: 10,
     },
     Send: {

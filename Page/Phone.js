@@ -4,27 +4,25 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TouchableOpacity, TextInput } from 'react-native';
 
 const Calling = require('../assets/images/image_call.png');
-const Speak = require('../assets/images/Speaker_icon.png');
+const Mute = require('../assets/images/Speaker_icon.png');
 const Close = require('../assets/images/Close_icon.png');
 
 
 
-export default function Call({ navigation }) {
+export default function Phone({ navigation }) {
     return (
         <View style={styles.container}>
             <View>
                 <View>
                     <Image source={Calling} resizeMode="cover" style={styles.Calling}></Image>
                     <Text style={styles.textLew}>Richard Lewis</Text>
-                    <Text style={styles.textRing}>Ringing...</Text>
+                    <Text style={styles.textRing}>15.23 Min</Text>
                 </View>
                 <View>
-                    <TouchableOpacity onPress={() => navigation.navigate("Phone")} > 
-                    <Image source={Speak} resizeMode="cover" style={styles.Speaker}></Image>
+                    <Image source={Mute} resizeMode="cover" style={styles.Speaker}></Image>
+                    <TouchableOpacity onPress={() => navigation.navigate("Rating")} > 
+                    <Image source={Close} resizeMode="cover" style={styles.Close}></Image>
                     </TouchableOpacity>
-                        <Image source={Close} resizeMode="cover" style={styles.Close}></Image>
-                   
-                    
                 </View>
             </View>
             <StatusBar style="auto" />
