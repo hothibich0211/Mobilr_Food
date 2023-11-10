@@ -9,24 +9,37 @@ const Increase = require('../assets/images/IconP.png');
 
 export default function Cart({ navigation }) {
     const [itemCart, setItemCart] = useState(DataCart);
-    const [quantity, setQuantity] = useState(1);
     const [total, setTotal] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
-    const increaseQuantity = () => {
-        setQuantity(quantity + 1);
+    const increaseQuantity = (itemId) => {
+        setItemCart((prevItemCart) => {
+            return prevItemCart.map((item) => {
+                if (item.id === itemId) {
+                    return { ...item, quantity: (item.quantity || 1) + 1 };
+                }
+                return item;
+            });
+        });
     };
 
-    const decreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-        }
+    const decreaseQuantity = (itemId) => {
+        setItemCart((prevItemCart) => {
+            return prevItemCart.map((item) => {
+                if (item.id === itemId && item.quantity > 1) {
+                    return { ...item, quantity: item.quantity - 1 };
+                }
+                return item;
+            });
+        });
     };
+
 
 
     const calculateTotal = () => {
         let total = 0;
         for (const item of itemCart) {
-            total += item.price * quantity;
+            total += (item.price || 0) * (item.quantity || 1);
         }
         return total;
     };
@@ -35,7 +48,7 @@ export default function Cart({ navigation }) {
     useEffect(() => {
         const newTotal = calculateTotal();
         setTotal(newTotal);
-    }, [quantity, itemCart]);
+    }, [itemCart]);
 
     return (
         <View style={styles.container}>
@@ -45,9 +58,7 @@ export default function Cart({ navigation }) {
 
                     {itemCart.map((item) => (
                         <View style={styles.Card1} key={item.id}>
-
                             <Image source={item.imageSource} resizeMode="cover" style={styles.Menu_list} />
-
                             <View style={styles.textContainer}>
                                 <Text style={styles.textGreenNodol}>{item.name}</Text>
                                 <Text style={styles.textYour}>{item.restaurant}</Text>
@@ -55,11 +66,11 @@ export default function Cart({ navigation }) {
 
                             </View>
                             <View style={styles.quantityContainer}>
-                                <TouchableOpacity onPress={decreaseQuantity} style={styles.quantityButton}>
+                                <TouchableOpacity onPress={() => decreaseQuantity(item.id)} style={styles.quantityButton}>
                                     <Image source={Decrease} resizeMode="cover" style={styles.Iconde}></Image>
                                 </TouchableOpacity>
-                                <Text style={styles.quantityText}>{quantity}</Text>
-                                <TouchableOpacity onPress={increaseQuantity} style={styles.quantityButton}>
+                                <Text style={styles.quantityText}>{item.quantity || 1}</Text>
+                                <TouchableOpacity onPress={() => increaseQuantity(item.id)} style={styles.quantityButton}>
                                     <Image source={Increase} resizeMode="cover" style={styles.IconP}></Image>
                                 </TouchableOpacity>
                             </View>
