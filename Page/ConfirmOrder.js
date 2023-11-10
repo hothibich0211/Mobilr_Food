@@ -5,9 +5,9 @@ import DataPay from '../Data/DataPay';
 import Total from '../Components/Total';
 const Bg = require('../assets/images/Bg.png');
 const Location = require('../assets/images/icon_Location.png');
+const imageSource = require('../assets/images/paypal_Logo.png');
 const Back = require('../assets/images/IConBack.png');
 export default function ConfirmOrder({ navigation }) {
-	const [payment, setPayment] = useState(DataPay);
 	return (
 		<View style={styles.container}>
 			<ImageBackground source={Bg} resizeMode="cover" style={styles.Bg}>
@@ -16,21 +16,29 @@ export default function ConfirmOrder({ navigation }) {
 				</TouchableOpacity>
 				<Text style={styles.textConfirm}>Confirm Order</Text>
 				<ScrollView>
-					{payment.slice(0, 2).map((item) => (
-						<View style={styles.card} key={item.id}>
+						<TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Shipping')}>
 							<View style={styles.row_1}>
-								<Text style={styles.textDeliver}>{item.name}</Text>
+								<Text style={styles.textDeliver}>Deliver to</Text>
 								<Text style={styles.textEdit}>Edit</Text>
 							</View>
 							<View style={styles.row_2}>
-								<Image source={item.imageSource} resizeMode="cover" style={styles.imageLocation} />
-								<Text style={styles.textLocation}>{item.pay}</Text>
+								<Image source={Location} resizeMode="cover" style={styles.imageLocation} />
+								<Text style={styles.textLocation}>4517 Washington Ave.Manchester</Text>
 							</View>
-						</View>
-					))}
+						</TouchableOpacity>
+						<TouchableOpacity style={styles.card2} onPress={() => navigation.navigate('Payment')}>
+							<View style={styles.row_3}>
+								<Text style={styles.textPay}>Payment method</Text>
+								<Text style={styles.textEdit}>Edit</Text>
+							</View>
+							<View style={styles.row_4}>
+								<Image source={imageSource} resizeMode="cover" style={styles.imageLocation} />
+								<Text style={styles.textLocation}>2121 6352 8465 ****</Text>
+							</View>
+						</TouchableOpacity>
 				</ScrollView>
 			</ImageBackground>
-			<Total destination="Payment" title="Go to Payment" />
+			<Total destination="Checkout" title="Go to Checkout" />
 
 			<StatusBar style="auto" />
 		</View>
@@ -82,6 +90,27 @@ const styles = StyleSheet.create({
 		marginLeft: 35,
 		
 	},
+	card2:{
+
+	},
+	row_3:{
+		marginTop: 30,
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		marginLeft: 35,
+	},
+	textPay:{
+		fontSize: 15,
+		opacity: 0.3,
+		flex: 1,
+	},
+	row_4:{
+		marginTop: 20,
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		gap: 20,
+		marginLeft: 35,
+	}
 
 
 });

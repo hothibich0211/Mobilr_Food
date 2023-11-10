@@ -1,6 +1,7 @@
 import { StyleSheet, ImageBackground, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import Shipping from './Shipping';
 const Bg = require('../assets/images/Bg.png');
 const Back = require('../assets/images/IConBack.png');
 
@@ -13,7 +14,7 @@ export default function Payment({navigation}){
 					<Image source={Back} resizeMode='cover' style={styles.iconBack} />
 				</TouchableOpacity>
 				<Text style={styles.textConfirm}>Payment</Text>
-				{payment.slice(1,4).map((item) => (
+				{payment.slice(2,5).map((item) => (
 					<View style={styles.card} key={item.id}>
 						<TouchableOpacity style={styles.row_2}>
 							<Image source={item.imageSource} resizeMode="cover" style={styles.imageLocation} />

@@ -13,6 +13,8 @@ import Phones from './Page/Phones';
 import Rating from './Page/Rating';
 import Payment from './Page/Payment';
 import Detail_Product from './Page/Detail';
+import Shipping from './Page/Shipping';
+import CheckOut from './Page/Checkout';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +32,8 @@ export default function App() {
         <Stack.Screen name="Rating" component={Rating} />
         <Stack.Screen name="Payment" component={Payment} />
         <Stack.Screen name="Detail" component={Detail_Product} />
+        <Stack.Screen name="Shipping" component={Shipping} />
+        <Stack.Screen name="Checkout" component={CheckOut} />
       </Stack.Navigator>
     </NavigationContainer>
   );

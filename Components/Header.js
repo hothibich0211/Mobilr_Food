@@ -33,28 +33,22 @@ export default function Header({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    box: {
-        position: 'fixed',
-    },
     textFavorite: {
         color: '#22242E',
-        // fontFamily: 'BentonSans Bold',
         fontSize: 31,
         fontStyle: 'normal',
         marginRight: '40%',
-        top: '15%',
+        marginTop: '15%',
     },
     inputText: {
-        // marginBottom:'20%',
         borderTopRightRadius: 15,
         borderBottomRightRadius: 15,
-        // borderRadius: 15,
         padding: 9,
         width: 200,
         marginRight: '20%',
         color: '#ffff',
         backgroundColor: '#F0EEFE',
-        // textAlign: 'center',
+  
     },
     swrapIcon: {
         height: 50,
@@ -67,7 +61,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
     },
     groupSearch: {
-        top: '10%',
+        marginTop: 10,
         flexDirection: 'row',
     },
     FilterIcon: {
