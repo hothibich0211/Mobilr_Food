@@ -16,7 +16,7 @@ export default function ConfirmOrder({ navigation }) {
 				</TouchableOpacity>
 				<Text style={styles.textConfirm}>Confirm Order</Text>
 				<ScrollView>
-						<TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Shipping')}>
+						<TouchableOpacity style={styles.card} onPress={() => navigation.navigate('SetLocation')}>
 							<View style={styles.row_1}>
 								<Text style={styles.textDeliver}>Deliver to</Text>
 								<Text style={styles.textEdit}>Edit</Text>

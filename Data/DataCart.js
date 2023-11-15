@@ -27,4 +27,25 @@ export default DataCart = [
       restaurant: 'Yet Another Restaurant',
       imageSource: require('../assets/images/Menu_Photo-1.png'), 
     },
+    {
+      id: 5,
+      name: 'Yet Another ',
+      price: '$45',
+      restaurant: 'Yet Another Restaurant',
+      imageSource: require('../assets/images/Menu_Photo-1.png'), 
+    },
+    {
+      id: 6,
+      name: 'Yet Another ',
+      price: '$45',
+      restaurant: 'Yet Another Restaurant',
+      imageSource: require('../assets/images/Menu_Photo-1.png'), 
+    },
+    // {
+    //   id: 7,
+    //   name: 'Yet Another ',
+    //   price: '$45',
+    //   restaurant: 'Yet Another Restaurant',
+    //   imageSource: require('../assets/images/Menu_Photo-1.png'), 
+    // },
   ];
