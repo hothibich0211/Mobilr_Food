@@ -9,7 +9,7 @@ export default DataPay = [
         id: 2,
         name: 'Deliver to',
         imageSource: require('../assets/images/icon_Location.png'),
-        pay: '4517 Washington Ave.Manchester',
+        pay: '3515 Washington Ave.Manchester gghhhh',
     },
     {
         id: 3,

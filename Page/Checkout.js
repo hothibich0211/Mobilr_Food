@@ -2,7 +2,7 @@ import { View, StyleSheet, StatusBar, Image, TouchableOpacity, Text, FlatList } 
 import Header from "../Components/Header";
 import DataCart from "../Data/DataCart";
 import { useState } from "react";
-export default function CheckOut(navigation) {
+export default function CheckOut({navigation}) {
     const [dataItem, setDataItem] = useState(DataCart);
     return (
         <View style={styles.container}>
@@ -24,7 +24,7 @@ export default function CheckOut(navigation) {
                     keyExtractor={(item) =>item.id}
                 />
             </View>
-            <TouchableOpacity style={styles.checkOut}>
+            <TouchableOpacity style={styles.checkOut} onPress={() => navigation.navigate('TrackOrder')}>
                 <Text style={styles.textCheckout}>Check out</Text>
             </TouchableOpacity>
             <StatusBar style="auto" />
