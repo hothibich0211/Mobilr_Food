@@ -4,7 +4,7 @@ import { WebView } from 'react-native-webview';
 const IconSearch = require('../assets/images/iconsearch.png');
 const Location = require('../assets/images/icon_Location.png');
 
-export default function SetLocation() {
+export default function SetLocation({navigation}) {
     const embedUrl = 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15337.174061805954!2d108.24962609999996!3d16.050251529598214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1700208173800!5m2!1sen!2s';
     return (
         <View style={styles.container}>
@@ -20,7 +20,7 @@ export default function SetLocation() {
                     <Image source={Location} resizeMode="cover" style={styles.Icons} />
                     <Text style={styles.location}>4517 Washington Ave. Manchester,{'\n'} Kentucky 39495</Text>
                 </View>
-                <TouchableOpacity style={styles.row2}>
+                <TouchableOpacity style={styles.row2} onPress={() => navigation.navigate('Shipping')} >
                     <Text style={styles.textLocation}>Set location</Text>
                 </TouchableOpacity>
             </View>
@@ -31,7 +31,7 @@ export default function SetLocation() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // position: 'relative',
+        position: 'relative',
     },
     map: {
         flex: 1,
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     },
     yourLocation: {
         position: 'absolute',
-        padding: 30,
+        marginLeft: 30,
+        padding: 20,
         marginTop:540,
         backgroundColor: '#FFFF',
         borderRadius: 20,
@@ -74,7 +75,6 @@ const styles = StyleSheet.create({
         gap: 10,
     },
     row2: {
-        // flex: 1,
         backgroundColor: '#6B50F6',
         height: 60,
         width: 260,

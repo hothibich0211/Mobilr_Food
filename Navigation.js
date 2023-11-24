@@ -4,6 +4,7 @@ import User from './Home/User';
 import Cart from './Home/Cart';
 import Mess from './Home/Mess';
 import HomeScreem from './Home/Home';
+import Home from './Home/Homepage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Image } from 'react-native';
@@ -17,7 +18,7 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Home" component={HomeScreem} options={{
+      <Tab.Screen name="Home" component={Home} options={{
         tabBarIcon: ({ color, size }) => (
           <Image source={HomePage} style={{ tintColor: color, width: size, height: size }} />
         ),

@@ -8,19 +8,21 @@ import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'reac
 
 const IconSearch = require('../assets/images/iconsearch.png');
 const FilterIcon = require('../assets/images/icons8-slider-48.png');
+const Notify = require('../assets/images/IconNotification.png');
 
-
-export default function Header({navigation}) {
+export default function Header({ navigation }) {
 
     return (
         <View sstyle={styles.box}>
             <Text style={styles.textFavorite}>Find Your{'\n'}Favorite Food</Text>
+            <Image source={Notify} resizeMode="cover" style={styles.Notify}></Image>
+
             <View style={styles.groupSearch} >
                 <View style={styles.swrapIcon}>
                     <Image source={IconSearch} resizeMode="cover" style={styles.Icons}></Image>
                 </View>
                 <TextInput style={styles.inputText} placeholder="What do you want to order?" />
-                <TouchableOpacity style={styles.rightIcon} onPress={()=>navigation.navigate("Filter")}>
+                <TouchableOpacity style={styles.rightIcon} onPress={() => navigation.navigate("Filter")}>
                     <View>
                         <Image source={FilterIcon} resizeMode="cover" style={styles.icon} />
                     </View>
@@ -33,12 +35,20 @@ export default function Header({navigation}) {
 }
 
 const styles = StyleSheet.create({
+    box: {
+        flex: 3,
+        marginRight: 30,
+    },
     textFavorite: {
         color: '#22242E',
         fontSize: 31,
         fontStyle: 'normal',
         marginRight: '40%',
         marginTop: '15%',
+    },
+    Notify: {
+        marginTop: -90,
+        marginLeft: 200,
     },
     inputText: {
         borderTopRightRadius: 15,
@@ -48,7 +58,7 @@ const styles = StyleSheet.create({
         marginRight: '20%',
         color: '#ffff',
         backgroundColor: '#F0EEFE',
-  
+
     },
     swrapIcon: {
         height: 50,
@@ -61,7 +71,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 15,
     },
     groupSearch: {
-        marginTop: 10,
+        marginTop: -40,
         flexDirection: 'row',
     },
     FilterIcon: {
@@ -78,7 +88,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginLeft: '-15%',
     },
-    icon:{
-        width:25,
+    icon: {
+        width: 25,
     }
 })

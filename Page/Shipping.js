@@ -20,10 +20,10 @@ export default function Shipping({ navigation }) {
 							<View style={styles.row_1}>
 								<Text style={styles.textDeliver}>{item.name}</Text>
 							</View>
-							<View style={styles.row_2}>
+							<TouchableOpacity style={styles.row_2} onPress={() => navigation.navigate('ConfirmOrder')}>
 								<Image source={item.imageSource} resizeMode="cover" style={styles.imageLocation} />
 								<Text style={styles.textLocation}>{item.pay}</Text>
-							</View>
+							</TouchableOpacity>
 						</View>
 					))}
 				</ScrollView>

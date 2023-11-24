@@ -16,6 +16,7 @@ import Detail_Product from './Page/Detail';
 import Shipping from './Page/Shipping';
 import CheckOut from './Page/Checkout';
 import SetLocation from './Page/SetLocation';
+import TrackOrder from './Page/TrackOrder';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function App() {
         <Stack.Screen name="Shipping" component={Shipping} />
         <Stack.Screen name="Checkout" component={CheckOut} />
         <Stack.Screen name="SetLocation" component={SetLocation} />
+        <Stack.Screen name="TrackOrder" component={TrackOrder} />
       </Stack.Navigator>
     </NavigationContainer>
   );
