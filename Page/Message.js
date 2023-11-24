@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         top: 90,
     },
     search:{
-        marginTop:170,
+        marginTop:90,
     },
     TextMess: {
         top: 188,
