@@ -1,73 +1,77 @@
-
-import { StatusBar } from 'expo-status-bar';
-import { useState } from "react";
-import { StyleSheet, Image, Text, View, TouchableOpacity, ScrollView, FlatList, ImageBackground } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, FlatList } from 'react-native';
+import HeaderUser from '../Components/HeaderUser';
+import Collapsible from 'react-native-collapsible';
 import DataCart from "../Data/DataCart";
-
 const Profile = require('../assets/images/image_Profile.png');
-const Edit = require('../assets/images/icon_Edit.png');
-const Voucher = require('../assets/images/Voucher.png');
 
-export default function User({ navigation }) {
-    const [dataItem, setDataItem] = useState(DataCart);
+const User = () => {
+    const [isCollapsed, setIsCollapsed] = useState(false);
+
+    // Dummy data for FlatList
+    const DATA = DataCart;
+    const renderItem = ({ item }) => (
+        <Text style={styles.item}>
+            {`${item.name}, ${item.price}, ${item.restaurant}, ${item.imageSource}`}
+        </Text>
+    );
+
     return (
         <View style={styles.container}>
-
-            <ImageBackground source={Profile} resizeMode="cover" style={styles.Profile}>
-                <View style={styles.background}>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.Textbutton}>Member Gold</Text>
-                    </TouchableOpacity>
-                    <Text style={styles.TextTitle}>Arash Ranjbaran</Text>
-                    <Image source={Edit} resizeMode="cover" style={styles.icon_Edit} />
-                    <Text style={styles.email}>awdesign.ar@gmail.com</Text>
-                    <Image source={Voucher} resizeMode="cover" style={styles.icon_Voucher} />
-                    <Text style={styles.Voucher}>You Have 3 Voucher</Text>
-                    <Text style={styles.Menu}>Favorite</Text>
-                    <FlatList
-                        data={dataItem}
-                        renderItem={({ item }) => (
-                            <View style={styles.Row}>
-                                <Image source={item.imageSource} resizeMode="cover" style={styles.imgItem} />
-                                <View style={styles.Item}>
-                                    <Text style={styles.textName}>{item.name}</Text>
-                                    <Text style={styles.textWaroenk}>{item.restaurant}</Text>
-                                    <Text style={styles.textPrice}>{item.price}</Text>
-                                </View>
-                                <Text style={styles.textProcess}>Buy Again</Text>
-                            </View>
-                        )}
-                        keyExtractor={(item) => item.id}
+            <ScrollView
+                onScroll={(event) => {
+                    const yOffset = event.nativeEvent.contentOffset.y;
+                    setIsCollapsed(yOffset > 50);
+                }}
+                scrollEventThrottle={16}
+            >
+                <Collapsible collapsed={isCollapsed}>
+                    <Image
+                        source={Profile} // Replace with your image URL
+                        style={styles.image}
                     />
-            
-
-                </View>
-            </ImageBackground>
-
+                </Collapsible>
+                <HeaderUser />
+                <FlatList
+                    data={DATA}
+                    renderItem={({ item }) => (
+                        <View style={styles.Row}>
+                            <Image source={item.imageSource} resizeMode="cover" style={styles.imgItem} />
+                            <View style={styles.Item}>
+                                <Text style={styles.textName}>{item.name}</Text>
+                                <Text style={styles.textWaroenk}>{item.restaurant}</Text>
+                                <Text style={styles.textPrice}>{item.price}</Text>
+                            </View>
+                            <Text style={styles.textProcess}>Buy Again</Text>
+                        </View>
+                    )}
+                    keyExtractor={(item) => item.id.toString()}
+                />
+            </ScrollView>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
     },
-    Profile: {
+    image: {
         width: '100%',
+        height: 200,
+    },
+    item: {
+        padding: 20,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
     },
     background: {
         flexDirection: 'column',
-        gap: 20,
-        paddingTop: 34,
         paddingHorizontal: 20,
         borderTopLeftRadius: 40,
         borderTopRightRadius: 40,
         backgroundColor: '#F6F6F6',
-        marginTop: -35,
-        zIndex: 4,
-        padding: 20,
+
     },
     button: {
         backgroundColor: '#3FDA85',
@@ -95,8 +99,8 @@ const styles = StyleSheet.create({
     },
     Voucher: {
         marginTop: -58,
-        marginLeft:55,
-        fontSize:20,
+        marginLeft: 55,
+        fontSize: 20,
     },
 
     scrollViewContent: {
@@ -107,9 +111,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
-    icon_Edit:{
-        marginTop:-50,
-        marginLeft:300,
+    icon_Edit: {
+        marginTop: -50,
+        marginLeft: 300,
     },
 
     content: {
@@ -148,6 +152,8 @@ const styles = StyleSheet.create({
         height: 30,
         marginTop: 20,
         marginRight: 20,
-        fontWeight:'bold',
+        fontWeight: 'bold',
     },
 });
+
+export default User;
