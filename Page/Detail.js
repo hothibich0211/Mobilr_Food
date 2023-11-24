@@ -78,6 +78,7 @@ const DetailProduct = () => {
                 <Collapsible collapsed={isCollapsed}>
                     <Image source={Detail} style={styles.image} />
                 </Collapsible>
+                <View style={styles.Ditail}>
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.Textbutton}>Popular</Text>
                     <Image source={Location} resizeMode="cover" style={styles.icon_Location} />
@@ -93,6 +94,7 @@ const DetailProduct = () => {
                     options as well in our online shop, but there is nothing like getting the whole...
                 </Text>
                 <Text style={styles.Menu}>Popular Menu</Text>
+                </View>
                 {/* FlatList for data */}
                 <FlatList
                     data={data}
@@ -109,6 +111,8 @@ const DetailProduct = () => {
                     horizontal
                     showsHorizontalScrollIndicator={false}
                 />
+                <View style={styles.menu}>
+                    <Text style={styles.TextTest}>Testimonials</Text>
                 {/* FlatList for dataMenu */}
                 <FlatList
                     data={dataMenu}
@@ -127,6 +131,7 @@ const DetailProduct = () => {
                     )}
                     keyExtractor={(item) => item.id}
                 />
+                </View>
             </ScrollView>
         </View>
     );
@@ -145,10 +150,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#ccc',
     },
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
+    
 
 
     button: {
@@ -170,7 +172,7 @@ const styles = StyleSheet.create({
         height: 32,
     },
     icon_Love: {
-        marginTop:-35,
+        marginTop:-33,
         width: 34,
         height: 34,
         marginLeft: 300,
@@ -219,6 +221,7 @@ const styles = StyleSheet.create({
         elevation: 5,
         margin: 5,
         alignItems: 'center',
+        padding:10,
     },
 
     title: {
@@ -233,6 +236,10 @@ const styles = StyleSheet.create({
     },
     price: {
         textAlign: 'center',
+    },
+    TextTest:{
+        fontSize: 20,
+        fontWeight: 'bold',
     },
     cards: {
         backgroundColor: '#fff',
@@ -249,7 +256,7 @@ const styles = StyleSheet.create({
         marginLeft: 1,
         flexWrap: 'wrap',
         gap: 20,
-
+        padding:10,
     },
     textCon: {
         flex: 5,
@@ -258,7 +265,7 @@ const styles = StyleSheet.create({
         width: 150,
     },
     Item: {
-        marginRight: 300,
+        marginRight: 280,
         marginTop: 10,
     },
     name: {
@@ -271,7 +278,13 @@ const styles = StyleSheet.create({
         left: -20,
     },
     Textname: {
-        marginTop: 20,
+        marginTop: 10,
+    },
+    Ditail:{
+        marginHorizontal:20,
+    },
+    menu:{
+        marginHorizontal:20,
     }
 });
 

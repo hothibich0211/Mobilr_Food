@@ -10,8 +10,9 @@ const IconSearch = require('../assets/images/iconsearch.png');
 const FilterIcon = require('../assets/images/icons8-slider-48.png');
 const Notify = require('../assets/images/IconNotification.png');
 
-export default function Header({ navigation }) {
+export default function Header() {
 
+    const navigation=useNavigation()
     return (
         <View sstyle={styles.box}>
             <Text style={styles.textFavorite}>Find Your{'\n'}Favorite Food</Text>

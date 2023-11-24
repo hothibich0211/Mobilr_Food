@@ -44,12 +44,12 @@ export default function Filter(){
             <TouchableOpacity style={styles.buttonF3}>
                 <Text style={styles.TextMC}>Main Course</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonF4}>
+            {/* <TouchableOpacity style={styles.buttonF4}>
                 <Text style={styles.TextA}>Appetizer</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonF5}>
                 <Text style={styles.TextD}>Dessert</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
         <View>
         <TouchableOpacity style={styles.buttonF6}>
@@ -71,22 +71,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    text_type: {
-        fontSize: 18,
-        marginLeft: '-25%',
-        marginTop: 50,
-        fontWeight: 'bold',
+    text_type:{
+        fontSize:20,
+        fontWeight:'bold',
+        marginRight:90,
+        marginTop:10,
     },
+   
     buttonR: {
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginLeft: 40,
-        marginTop: 415,
+        marginTop: 20,
         alignItems: 'center',
         width: 100,
-        marginTop: -350,
-        marginRight: '35%',
+        marginRight: '60%',
     },
     TextRes: {
         color: '#6b50f6',
@@ -102,30 +101,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginLeft: 100,
-        marginTop: 415,
+        marginTop:-40,
         alignItems: 'center',
         width: 70,
         justifyContent: 'center',
-        marginRight: 60,
+        marginLeft: 70,
         flexDirection: 'row',
     },
     text_loc:{
-        fontSize: 18,
-        marginLeft: '-20%',
-        marginTop:-380,
+        fontSize: 20,
+        marginRight: 250,
         fontWeight: 'bold',
+        marginTop:10,
     },
     buttonK:{
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginLeft: 100,
         alignItems: 'center',
         width: 70,
-        marginTop: -365,
         justifyContent: 'center',
         marginRight: '47%',
+        marginTop:10,
     },
     TextKm:{
         color: '#6b50f6',
@@ -139,8 +136,8 @@ const styles = StyleSheet.create({
         marginLeft:95,
         alignItems: 'center',
         width: 70,
-        marginTop: -405,
         justifyContent: 'center',
+        marginTop:-40,
     },
     TextK1:{
         color: '#6b50f6',
@@ -151,11 +148,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginLeft: 13,
+        marginLeft: 190,
         alignItems: 'center',
         width: 70,
-        marginTop: -448,
         justifyContent: 'center',
+        marginTop:-40,
     },
     TextK2:{
         color: '#6b50f6',
@@ -163,20 +160,19 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     text_food:{
-        fontSize: 18,
-        marginLeft: '-27%',
-        marginTop:-435,
+        fontSize: 20,
+        marginRight: 280,
         fontWeight: 'bold',
     },
     buttonF:{
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginRight: 94,
+        marginRight: 50,
         alignItems: 'center',
         width: 70,
-        marginTop: -420,
         justifyContent: 'center',
+        marginTop:10,
     },
     TextC:{
         color: '#6b50f6',
@@ -187,11 +183,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginRight: 11,
+        marginLeft: 100,
         alignItems: 'center',
         width: 70,
-        marginTop: -460,
         justifyContent: 'center',
+        marginTop:-40,
     },
     TextS:{
         color: '#6b50f6',
@@ -202,47 +198,45 @@ const styles = StyleSheet.create({
         backgroundColor: '#e6fff0',
         borderRadius: 15,
         padding: 10,
-        marginRight: -72,
+        marginLeft: 195,
         alignItems: 'center',
         width: 120,
-        marginTop: -500,
         justifyContent: 'center',
+        marginTop:-42,
     },
     TextMC:{
         color: '#6b50f6',
         fontSize: 16,
         fontWeight: 'bold',
     },
-    buttonF4:{
-        backgroundColor: '#e6fff0',
-        borderRadius: 15,
-        padding: 10,
-        marginRight: 92,
-        alignItems: 'center',
-        width: 100,
-        marginTop: -490,
-        justifyContent: 'center',
-    },
-    TextA:{
-        color: '#6b50f6',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    buttonF5:{
-        backgroundColor: '#e6fff0',
-        borderRadius: 15,
-        padding: 10,
-        marginRight: -22,
-        alignItems: 'center',
-        width: 90,
-        marginTop: -530,
-        justifyContent: 'center',
-    },
-    TextD:{
-        color: '#6b50f6',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
+    // buttonF4:{
+    //     backgroundColor: '#e6fff0',
+    //     borderRadius: 15,
+    //     padding: 10,
+    //     marginRight: 92,
+    //     alignItems: 'center',
+    //     width: 100,
+    //     justifyContent: 'center',
+    // },
+    // TextA:{
+    //     color: '#6b50f6',
+    //     fontSize: 16,
+    //     fontWeight: 'bold',
+    // },
+    // buttonF5:{
+    //     backgroundColor: '#e6fff0',
+    //     borderRadius: 15,
+    //     padding: 10,
+    //     marginRight: -22,
+    //     alignItems: 'center',
+    //     width: 90,
+    //     justifyContent: 'center',
+    // },
+    // TextD:{
+    //     color: '#6b50f6',
+    //     fontSize: 16,
+    //     fontWeight: 'bold',
+    // },
 
     buttonF6:{
         backgroundColor: '#6b50f6',
@@ -251,8 +245,8 @@ const styles = StyleSheet.create({
         marginRight: 2.5,
         alignItems: 'center',
         width: 300,
-        marginTop: -430,
         justifyContent: 'center',
+        marginTop:180,
     },
     TextButtons:{
         color: '#fff',

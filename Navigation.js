@@ -39,11 +39,7 @@ export default function Navigation() {
         ),
       }} />
 
-      {/* <Tab.Screen name="Call" component={Call} options={{
-        tabBarIcon: ({ color, size }) => (
-          <Image source={Messa} style={{ tintColor: color, width: size, height: size }} />
-        ),
-      }} /> */}
+    
 
     </Tab.Navigator>
 
